@@ -9,7 +9,23 @@ describe Post do
     expect(p.attachment_url).to eq instagram_url
   end
 
-  context "posts with pictures" do
+  context "without pictures" do
+    let!(:post) { Post.new(:attachment_url => nil) }
+
+    it "shouldn't have an attachment_url if one isn't given" do
+      expect(post.attachment_url).to be_nil
+    end
+
+    it "should have nil as an image_url, if attachment is nil" do
+      expect(post.image_url).to be_nil
+    end
+
+    it "shouldn't have an image type" do
+      expect(post.image_type).to be_nil
+    end
+  end
+
+  context "with pictures" do
     instagram_url       = "http://instagram.com/p/iuuZxfOjEj/"
     twitpic_url         = "http://twitpic.com/1e10q"
     pic_twitter_url     = "https://pbs.twimg.com/media/BdLBbkpCcAAspZn.jpg"

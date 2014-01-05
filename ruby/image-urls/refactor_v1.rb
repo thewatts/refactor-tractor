@@ -31,7 +31,7 @@ class Post
 
   def image_url_of_size(size)
     service, url = present_image_service_data
-    send(service)[size].call url
+    send(service)[size].call url if service
   end
 
   def present_image_service_data
