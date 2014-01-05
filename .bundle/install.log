@@ -1,0 +1,7 @@
+# Logfile created on 2014-01-04 22:06:42 -0700 by logger.rb/41954
+I, [2014-01-04T22:06:42.433885 #1396]  INFO -- : 0:  diff-lcs (1.2.5) from /Users/watts/.rvm/gems/ruby-2.0.0-p353/specifications/diff-lcs-1.2.5.gemspec
+I, [2014-01-04T22:06:43.619390 #1396]  INFO -- : 0:  rspec-core (2.14.7) from /Users/watts/.rvm/gems/ruby-2.0.0-p353/specifications/rspec-core-2.14.7.gemspec
+I, [2014-01-04T22:06:45.024612 #1396]  INFO -- : 0:  rspec-expectations (2.14.4) from /Users/watts/.rvm/gems/ruby-2.0.0-p353/specifications/rspec-expectations-2.14.4.gemspec
+I, [2014-01-04T22:06:46.607210 #1396]  INFO -- : 0:  rspec-mocks (2.14.4) from /Users/watts/.rvm/gems/ruby-2.0.0-p353/specifications/rspec-mocks-2.14.4.gemspec
+I, [2014-01-04T22:06:47.323348 #1396]  INFO -- : 0:  rspec (2.14.1) from /Users/watts/.rvm/gems/ruby-2.0.0-p353/specifications/rspec-2.14.1.gemspec
+I, [2014-01-04T22:06:47.323911 #1396]  INFO -- : 0:  bundler (1.5.1) from /Users/watts/.rvm/gems/ruby-2.0.0-p353@global/specifications/bundler-1.5.1.gemspec
