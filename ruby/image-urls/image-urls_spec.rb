@@ -1,5 +1,5 @@
 require 'rspec/autorun'
-require_relative 'original'
+require_relative 'refactor_v1'
 
 describe Post do
 
@@ -35,20 +35,12 @@ describe Post do
         expect(insta.has_instagram?).to be_true
       end
 
-      it "should return the instagram full url" do
-        expect(insta.instagram_url).to eq medium_size_url
-      end
-
-      it "should return the instagram thumb url" do
-        expect(insta.instagram_thumb_url).to eq thumb_url
-      end
-
       it "should have an instagram url for image_url" do
-        expect(insta.image_url).to eq insta.instagram_url
+        expect(insta.image_url).to eq medium_size_url
       end
 
       it "should have an instagram thumb url for thumb_url" do
-        expect(insta.image_thumb_url).to eq insta.instagram_thumb_url
+        expect(insta.image_thumb_url).to eq thumb_url
       end
     end
 
@@ -57,8 +49,6 @@ describe Post do
         services.each do |tweet|
           next if tweet == insta
           expect(tweet.has_instagram?).to be_false
-          expect(tweet.instagram_url).to be_nil
-          expect(tweet.instagram_thumb_url).to be_nil
         end
       end
     end
@@ -71,16 +61,12 @@ describe Post do
         expect(twitpic.has_twitpic?).to be_true
       end
 
-      it "should return the twitpic full url" do
-        expect(twitpic.twitpic_url).to eq medium_size_url
-      end
-
-      it "should return the twitpic thumb url" do
-        expect(twitpic.twitpic_thumb_url).to eq thumb_url
-      end
-
       it "should have a twitpic url for image_url" do
-        expect(twitpic.image_url).to eq twitpic.twitpic_url
+        expect(twitpic.image_url).to eq medium_size_url
+      end
+
+      it "should have a twitpic thumb url for image_thumb_url" do
+        expect(twitpic.image_thumb_url).to eq thumb_url
       end
     end
 
@@ -89,8 +75,6 @@ describe Post do
         services.each do |tweet|
           next if tweet == twitpic
           expect(tweet.has_twitpic?).to be_false
-          expect(tweet.twitpic_url).to be_nil
-          expect(tweet.twitpic_thumb_url).to be_nil
         end
       end
     end
@@ -106,24 +90,14 @@ describe Post do
         expect(t_pic_png.has_twitter_pic?).to be_true
       end
 
-      it "should return the twitter_pic full url" do
-        expect(t_pic.twitter_pic_url).to eq medium_size_jpg
-        expect(t_pic_png.twitter_pic_url).to eq medium_size_png
-      end
-
-      it "should return the twitter_pic thumb url" do
-        expect(t_pic.twitter_pic_thumb_url).to eq thumb_jpg
-        expect(t_pic_png.twitter_pic_thumb_url).to eq thumb_png
-      end
-
       it "should have an twitter_pic url for image_url" do
-        expect(t_pic.image_url).to eq t_pic.twitter_pic_url
-        expect(t_pic_png.image_url).to eq t_pic_png.twitter_pic_url
+        expect(t_pic.image_url).to eq medium_size_jpg
+        expect(t_pic_png.image_url).to eq medium_size_png
       end
 
       it "should have an twitter_pic thumb url for thumb_url" do
-        expect(t_pic.image_thumb_url).to eq t_pic.twitter_pic_thumb_url
-        expect(t_pic_png.image_thumb_url).to eq t_pic_png.twitter_pic_thumb_url
+        expect(t_pic.image_thumb_url).to eq thumb_jpg
+        expect(t_pic_png.image_thumb_url).to eq thumb_png
       end
     end
 
@@ -132,8 +106,6 @@ describe Post do
         services.each do |tweet|
           next if ( tweet == t_pic || tweet == t_pic_png )
           expect(tweet.has_twitter_pic?).to be_false
-          expect(tweet.twitter_pic_url).to be_nil
-          expect(tweet.twitter_pic_thumb_url).to be_nil
         end
       end
     end
@@ -146,20 +118,12 @@ describe Post do
         expect(yfrog.has_yfrog?).to be_true
       end
 
-      it "should return the yfrog full url" do
-        expect(yfrog.yfrog_url).to eq medium_size_url
-      end
-
-      it "should return the twitter_pic thumb url" do
-        expect(yfrog.yfrog_thumb_url).to eq thumb_url
-      end
-
       it "should have an yfrog url for image_url" do
-        expect(yfrog.image_url).to eq yfrog.yfrog_url
+        expect(yfrog.image_url).to eq medium_size_url
       end
 
       it "should have an yfrog thumb url for thumb_url" do
-        expect(yfrog.image_thumb_url).to eq yfrog.yfrog_thumb_url
+        expect(yfrog.image_thumb_url).to eq thumb_url
       end
     end
 
@@ -168,8 +132,6 @@ describe Post do
         services.each do |tweet|
           next if tweet == yfrog
           expect(tweet.has_yfrog?).to be_false
-          expect(tweet.yfrog_url).to be_nil
-          expect(tweet.yfrog_thumb_url).to be_nil
         end
       end
     end
