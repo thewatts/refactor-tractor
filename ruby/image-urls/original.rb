@@ -6,6 +6,11 @@ class Post
     @attachment_url = attributes[:attachment_url]
   end
 
+  TWITPIC_ID    = %r{twitpic.com/([a-zA-Z0-9]+)}
+  POSTEROUS_ID  = %r{post.ly/([a-zA-Z0-9]+)}
+  TWEETPHOTO_ID = %r{(pic.gd|tweetphoto.com)/([a-zA-Z0-9]+)}
+  YFROG_ID      = %r{yfrog.[^/]+/([a-zA-Z0-9]+[jptg])}
+  TWITTER_PIC   = %r{pbs.twimg.com/media/([\w]+)}
   INSTAGRAM_ID  = %r{instagram.com/p/([\w-]+)}
 
   def image_url

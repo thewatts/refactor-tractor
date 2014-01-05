@@ -62,5 +62,116 @@ describe Post do
         end
       end
     end
+
+    describe "with a TwitPic photo" do
+      medium_size_url = "http://twitpic.com/show/full/1e10q"
+      thumb_url       = "http://twitpic.com/show/mini/1e10q"
+
+      it "should have a twitpic photo" do
+        expect(twitpic.has_twitpic?).to be_true
+      end
+
+      it "should return the twitpic full url" do
+        expect(twitpic.twitpic_url).to eq medium_size_url
+      end
+
+      it "should return the twitpic thumb url" do
+        expect(twitpic.twitpic_thumb_url).to eq thumb_url
+      end
+
+      it "should have a twitpic url for image_url" do
+        expect(twitpic.image_url).to eq twitpic.twitpic_url
+      end
+    end
+
+    describe "without a twitpic photo" do
+      it "shouldn't have any twitpic jazz" do
+        services.each do |tweet|
+          next if tweet == twitpic
+          expect(tweet.has_twitpic?).to be_false
+          expect(tweet.twitpic_url).to be_nil
+          expect(tweet.twitpic_thumb_url).to be_nil
+        end
+      end
+    end
+
+    describe "with an pic.twitter.com photo" do
+      medium_size_jpg = "https://pbs.twimg.com/media/BdLBbkpCcAAspZn.jpg:medium"
+      thumb_jpg       = "https://pbs.twimg.com/media/BdLBbkpCcAAspZn.jpg:thumb"
+      medium_size_png = "https://pbs.twimg.com/media/BdLBbkpCcAAspZn.png:medium"
+      thumb_png       = "https://pbs.twimg.com/media/BdLBbkpCcAAspZn.png:thumb"
+
+      it "should have an instagram photo" do
+        expect(t_pic.has_twitter_pic?).to be_true
+        expect(t_pic_png.has_twitter_pic?).to be_true
+      end
+
+      it "should return the twitter_pic full url" do
+        expect(t_pic.twitter_pic_url).to eq medium_size_jpg
+        expect(t_pic_png.twitter_pic_url).to eq medium_size_png
+      end
+
+      it "should return the twitter_pic thumb url" do
+        expect(t_pic.twitter_pic_thumb_url).to eq thumb_jpg
+        expect(t_pic_png.twitter_pic_thumb_url).to eq thumb_png
+      end
+
+      it "should have an twitter_pic url for image_url" do
+        expect(t_pic.image_url).to eq t_pic.twitter_pic_url
+        expect(t_pic_png.image_url).to eq t_pic_png.twitter_pic_url
+      end
+
+      it "should have an twitter_pic thumb url for thumb_url" do
+        expect(t_pic.image_thumb_url).to eq t_pic.twitter_pic_thumb_url
+        expect(t_pic_png.image_thumb_url).to eq t_pic_png.twitter_pic_thumb_url
+      end
+    end
+
+    describe "without an pic.twitter.com photo" do
+      it "shouldn't have any pic.twitter.com jazz" do
+        services.each do |tweet|
+          next if ( tweet == t_pic || tweet == t_pic_png )
+          expect(tweet.has_twitter_pic?).to be_false
+          expect(tweet.twitter_pic_url).to be_nil
+          expect(tweet.twitter_pic_thumb_url).to be_nil
+        end
+      end
+    end
+
+    describe "with a yfrog photo" do
+      medium_size_url = "http://yfrog.com/oefi8whj:iphone"
+      thumb_url       = "http://yfrog.com/oefi8whj:small"
+
+      it "should have an yfrog  photo" do
+        expect(yfrog.has_yfrog?).to be_true
+      end
+
+      it "should return the yfrog full url" do
+        expect(yfrog.yfrog_url).to eq medium_size_url
+      end
+
+      it "should return the twitter_pic thumb url" do
+        expect(yfrog.yfrog_thumb_url).to eq thumb_url
+      end
+
+      it "should have an yfrog url for image_url" do
+        expect(yfrog.image_url).to eq yfrog.yfrog_url
+      end
+
+      it "should have an yfrog thumb url for thumb_url" do
+        expect(yfrog.image_thumb_url).to eq yfrog.yfrog_thumb_url
+      end
+    end
+
+    describe "without an yfrog photo" do
+      it "shouldn't have any instagram jazz not instagram" do
+        services.each do |tweet|
+          next if tweet == yfrog
+          expect(tweet.has_yfrog?).to be_false
+          expect(tweet.yfrog_url).to be_nil
+          expect(tweet.yfrog_thumb_url).to be_nil
+        end
+      end
+    end
   end
 end
