@@ -32,7 +32,7 @@ describe Post do
       thumb_url       = "http://instagr.am/p/iuuZxfOjEj/media/?size=t"
 
       it "should have an instagram photo" do
-        expect(insta.has_instagram?).to be_true
+        expect(insta.image_type).to eq :instagram
       end
 
       it "should have an instagram url for image_url" do
@@ -48,7 +48,7 @@ describe Post do
       it "shouldn't have any instagram jazz" do
         services.each do |tweet|
           next if tweet == insta
-          expect(tweet.has_instagram?).to be_false
+          expect(tweet.image_type).not_to eq :instagram
         end
       end
     end
@@ -58,7 +58,7 @@ describe Post do
       thumb_url       = "http://twitpic.com/show/mini/1e10q"
 
       it "should have a twitpic photo" do
-        expect(twitpic.has_twitpic?).to be_true
+        expect(twitpic.image_type).to eq :twitpic
       end
 
       it "should have a twitpic url for image_url" do
@@ -74,7 +74,7 @@ describe Post do
       it "shouldn't have any twitpic jazz" do
         services.each do |tweet|
           next if tweet == twitpic
-          expect(tweet.has_twitpic?).to be_false
+          expect(tweet.image_type).not_to eq :twitpic
         end
       end
     end
@@ -86,8 +86,7 @@ describe Post do
       thumb_png       = "https://pbs.twimg.com/media/BdLBbkpCcAAspZn.png:thumb"
 
       it "should have an instagram photo" do
-        expect(t_pic.has_twitter_pic?).to be_true
-        expect(t_pic_png.has_twitter_pic?).to be_true
+        expect(t_pic.image_type).to eq :twitter_pic
       end
 
       it "should have an twitter_pic url for image_url" do
@@ -105,7 +104,7 @@ describe Post do
       it "shouldn't have any pic.twitter.com jazz" do
         services.each do |tweet|
           next if ( tweet == t_pic || tweet == t_pic_png )
-          expect(tweet.has_twitter_pic?).to be_false
+          expect(tweet.image_type).not_to eq :twitter_pic
         end
       end
     end
@@ -115,7 +114,7 @@ describe Post do
       thumb_url       = "http://yfrog.com/oefi8whj:small"
 
       it "should have an yfrog  photo" do
-        expect(yfrog.has_yfrog?).to be_true
+        expect(yfrog.image_type).to eq :yfrog
       end
 
       it "should have an yfrog url for image_url" do
@@ -128,10 +127,10 @@ describe Post do
     end
 
     describe "without an yfrog photo" do
-      it "shouldn't have any instagram jazz not instagram" do
+      it "shouldn't have any yfrog jazz" do
         services.each do |tweet|
           next if tweet == yfrog
-          expect(tweet.has_yfrog?).to be_false
+          expect(tweet.image_type).not_to eq :yfrog
         end
       end
     end
