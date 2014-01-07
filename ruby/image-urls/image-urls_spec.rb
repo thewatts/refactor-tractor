@@ -47,7 +47,7 @@ describe Post do
       medium_size_url = "http://instagr.am/p/iuuZxfOjEj/media/?size=m"
       thumb_url       = "http://instagr.am/p/iuuZxfOjEj/media/?size=t"
 
-      it "should have an instagram photo" do
+      xit "should have an instagram photo" do
         expect(insta.image_type).to eq :instagram
       end
 
@@ -73,7 +73,7 @@ describe Post do
       medium_size_url = "http://twitpic.com/show/full/1e10q"
       thumb_url       = "http://twitpic.com/show/mini/1e10q"
 
-      it "should have a twitpic photo" do
+      xit "should have a twitpic photo" do
         expect(twitpic.image_type).to eq :twitpic
       end
 
@@ -95,13 +95,13 @@ describe Post do
       end
     end
 
-    describe "with an pic.twitter.com photo" do
+    describe "with an twitter_pic photo" do
       medium_size_jpg = "https://pbs.twimg.com/media/BdLBbkpCcAAspZn.jpg:medium"
       thumb_jpg       = "https://pbs.twimg.com/media/BdLBbkpCcAAspZn.jpg:thumb"
       medium_size_png = "https://pbs.twimg.com/media/BdLBbkpCcAAspZn.png:medium"
       thumb_png       = "https://pbs.twimg.com/media/BdLBbkpCcAAspZn.png:thumb"
 
-      it "should have an instagram photo" do
+      xit "should have a twitter_pic photo" do
         expect(t_pic.image_type).to eq :twitter_pic
       end
 
@@ -116,7 +116,7 @@ describe Post do
       end
     end
 
-    describe "without an pic.twitter.com photo" do
+    describe "without an twitter_pic photo" do
       it "shouldn't have any pic.twitter.com jazz" do
         services.each do |tweet|
           next if ( tweet == t_pic || tweet == t_pic_png )
@@ -129,7 +129,7 @@ describe Post do
       medium_size_url = "http://yfrog.com/oefi8whj:iphone"
       thumb_url       = "http://yfrog.com/oefi8whj:small"
 
-      it "should have an yfrog  photo" do
+      xit "should have an yfrog  photo" do
         expect(yfrog.image_type).to eq :yfrog
       end
 

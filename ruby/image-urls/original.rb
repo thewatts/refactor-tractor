@@ -35,6 +35,12 @@ class Post
     yfrog_thumb_url
   end
 
+=begin
+
+  API CHANGED to use a method called `image_type` that returns
+  the type of image associated with the POST instead of having methods to ask
+  for each type of image
+
   def has_yfrog?
     yfrog_url
   end
@@ -50,6 +56,7 @@ class Post
   def has_instagram?
     instagram_url
   end
+=end
 
   def twitter_pic_url
     "#{attachment_url}:medium" if !attachment_url.to_s.scan(TWITTER_PIC).empty?
