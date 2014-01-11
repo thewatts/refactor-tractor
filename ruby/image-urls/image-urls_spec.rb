@@ -1,5 +1,6 @@
 require 'rspec/autorun'
-require_relative 'refactor_v1'
+#require_relative 'refactor_v1'
+require_relative 'original'
 
 describe Post do
 
@@ -20,7 +21,7 @@ describe Post do
       expect(post.image_url).to be_nil
     end
 
-    it "shouldn't have an image type" do
+    xit "shouldn't have an image type" do
       expect(post.image_type).to be_nil
     end
   end
@@ -61,7 +62,7 @@ describe Post do
     end
 
     describe "without an instagram photo" do
-      it "shouldn't have any instagram jazz" do
+      xit "shouldn't have any instagram jazz" do
         services.each do |tweet|
           next if tweet == insta
           expect(tweet.image_type).not_to eq :instagram
@@ -87,7 +88,7 @@ describe Post do
     end
 
     describe "without a twitpic photo" do
-      it "shouldn't have any twitpic jazz" do
+      xit "shouldn't have any twitpic jazz" do
         services.each do |tweet|
           next if tweet == twitpic
           expect(tweet.image_type).not_to eq :twitpic
@@ -117,7 +118,7 @@ describe Post do
     end
 
     describe "without an twitter_pic photo" do
-      it "shouldn't have any pic.twitter.com jazz" do
+      xit "shouldn't have any pic.twitter.com jazz" do
         services.each do |tweet|
           next if ( tweet == t_pic || tweet == t_pic_png )
           expect(tweet.image_type).not_to eq :twitter_pic
@@ -143,7 +144,7 @@ describe Post do
     end
 
     describe "without an yfrog photo" do
-      it "shouldn't have any yfrog jazz" do
+      xit "shouldn't have any yfrog jazz" do
         services.each do |tweet|
           next if tweet == yfrog
           expect(tweet.image_type).not_to eq :yfrog
